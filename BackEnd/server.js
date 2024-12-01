@@ -26,7 +26,8 @@ mongoose.connect('mongodb+srv://admin:admin@cluster0.p4dds.mongodb.net/music_sho
 const productSchema = new mongoose.Schema({
     name:String,
     type:String,
-    price:String
+    price:String,
+    image:String
 });
 
 //model based on schema
@@ -45,9 +46,9 @@ app.get('/api/products', async (req, res) => {
 
 app.post('/api/products', async (req, res) => {
     console.log(req.body.name);
-    const {name} = req.body;
+    const {name, type, price, image} = req.body;
 
-    const newProduct = new productModel({name});
+    const newProduct = new productModel({name, type, price, image});
     await newProduct.save(); //save to database
 
     res.status(201).json({"message": "product added", Product:newProduct});

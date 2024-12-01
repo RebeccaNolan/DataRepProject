@@ -1,21 +1,17 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
+import ProductItem from "./ProductItem";
 
-const Products = () => {
-    const[products, setProducts] = useState([]);
-
-    useEffect(() => {
-        axios.get('http://localhost:4000/api/products')
-        .then(response => setProducts(response.data.items))
-        .catch(error => console.error('Error fetching products:', error));
-    }, []);
-
+function Products(props) {
     return (
-        <div>
-            <h1>Products</h1>
-
-        </div>
-    )
+        <>
+            {props.myItems.map((item) => (
+                <ProductItem
+                    myitem={item}
+                    key={item._id}
+                    Reload={props.reloadData}
+                />
+            ))}
+        </>
+    );
 }
 
 export default Products;
