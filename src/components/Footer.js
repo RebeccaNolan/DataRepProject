@@ -1,5 +1,5 @@
 const Footer = () => {
-    return <h3>Find your perfect Guitar today</h3>;
+    return <h3></h3>;
   };
   
   export default Footer;

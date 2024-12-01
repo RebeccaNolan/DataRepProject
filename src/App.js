@@ -5,14 +5,16 @@ import Footer from './components/Footer';
 import Content from './components/Content';
 import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Products from './components/Products';
 
 function App() {
   return (
     <Router>
-      <NavigationBar />
+      <NavigationBar/>
       <Routes>
         <Route path="/" element={<Content />} />
-        <Route path="/Products" element={<h1>Products Component</h1>} />
+        <Route path="/Products" element={<Products />}/>
+        <Route path="/Wishlist" element={<h1>Wishlist Component</h1> } />
         </Routes>
       <Footer />
     </Router>

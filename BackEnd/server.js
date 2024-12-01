@@ -22,9 +22,36 @@ app.use(bodyParser.json());
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://admin:admin@cluster0.p4dds.mongodb.net/music_shop');
 
-app.get('/', (req, res) => {
-    res.send('Hello World');
+//Mongo schema
+const productSchema = new mongoose.Schema({
+    name:String,
+    type:String,
+    price:String
 });
+
+//model based on schema
+const productModel = new mongoose.model('myProducts', productSchema);
+
+app.get('/', (req, res) => {
+    res.send('This is running from the server');
+});
+
+//to fetch all products
+app.get('/api/products', async (req, res) => {
+    const items = await productModel.find({});
+    res.status(200).json({items})
+});
+
+
+app.post('/api/products', async (req, res) => {
+    console.log(req.body.name);
+    const {name} = req.body;
+
+    const newProduct = new productModel({name});
+    await newProduct.save(); //save to database
+
+    res.status(201).json({"message": "product added", Product:newProduct});
+})
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
