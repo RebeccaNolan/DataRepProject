@@ -1,7 +1,7 @@
-import { useEffect } from "react";
 import Products from "./Products";
 import { useState } from "react";
 import axios from "axios";
+import { useEffect } from "react";
 
 const ViewProducts = () => {
     const [products, setProducts] = useState([]);
@@ -24,7 +24,9 @@ const ViewProducts = () => {
     return(
         <div>
             <h2>product list</h2>
+            
             <Products myItems = {products} reloadData = {Reload} />
+            
         </div>
     );
 };

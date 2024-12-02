@@ -21,7 +21,8 @@ const ProductItem = (props) => {
             </Card.Body>
              </Card>
           {/*Added button*/}
-          <Button >Delete</Button>
+          <Button >Delete</Button> 
+          <Button>Add</Button>
         </div>
       );
 }

@@ -43,7 +43,7 @@ app.get('/api/products', async (req, res) => {
     res.status(200).json({items})
 });
 
-
+//add product
 app.post('/api/products', async (req, res) => {
     console.log(req.body.name);
     const {name, type, price, image} = req.body;
@@ -52,7 +52,15 @@ app.post('/api/products', async (req, res) => {
     await newProduct.save(); //save to database
 
     res.status(201).json({"message": "product added", Product:newProduct});
-})
+});
+
+//delete product
+app.delete('/api/products/:id', async (req, res) => {
+    console.log('Deleting products - ID: ', req.params.id);
+    const product = await productModel.findByIdAndDelete(req.params.id)
+    res.status(200).send({message: "Item deleted successfully", product});
+   
+});
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
