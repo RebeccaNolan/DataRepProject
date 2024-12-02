@@ -61,5 +61,8 @@ const Add = () => {
     
   );
 }
+//image URLs
+//Ibanez GIO series  https://m.media-amazon.com/images/I/61qOTlqgjIL.__AC_SX300_SY300_QL70_ML2_.jpg
+//Ibanez GIO stealth series  https://m.media-amazon.com/images/I/61+SxsQZ5jL._AC_SY300_SX300_.jpg
 
 export default Add;

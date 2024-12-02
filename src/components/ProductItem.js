@@ -9,6 +9,17 @@ const ProductItem = (props) => {
         console.log("Product item: ", props.myitem); //log for debug
     }, [props.myitem]); //only run when prop changes
 
+    const handleDelete = (e) => {
+      e.preventDefault();
+      axios.delete('http://localhost:4000/api/products/' + props.myitem._id)
+      .then(() => {
+        props.Reload();
+      })
+      .catch((error) => {
+        console.error("error deleting item: ", error);
+      });
+    };
+
     return (
         <div>
           <Card>
@@ -21,8 +32,8 @@ const ProductItem = (props) => {
             </Card.Body>
              </Card>
           {/*Added button*/}
-          <Button >Delete</Button> 
-          <Button>Add</Button>
+          <Button variant="danger" onClick={handleDelete}>Delete</Button> 
+          <Button>Add to wishlist</Button>
         </div>
       );
 }
