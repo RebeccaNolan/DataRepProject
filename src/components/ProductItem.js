@@ -26,14 +26,16 @@ const ProductItem = (props) => {
             <Card.Header>{props.myitem.name}</Card.Header>
             <Card.Body>
               <blockquote className="blockquote mb-0">
-                <img src={props.myitem.image} alt={props.myitem.name} />
+                <img src={props.myitem.image} alt={props.myitem.name} 
+                style = {{height: "200px", objectFit: "cover"}}/>
                 <footer>{props.myitem.price}</footer>
+                <footer>{props.myitem.type}</footer>
               </blockquote>
             </Card.Body>
              </Card>
           {/*Added button*/}
           <Button variant="danger" onClick={handleDelete}>Delete</Button> 
-          <Button>Add to wishlist</Button>
+          <Button>Add to Wishlist</Button>
         </div>
       );
 }

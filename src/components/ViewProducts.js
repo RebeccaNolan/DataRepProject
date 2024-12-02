@@ -23,10 +23,7 @@ const ViewProducts = () => {
 
     return(
         <div>
-            <h2>product list</h2>
-            
-            <Products myItems = {products} reloadData = {Reload} />
-            
+            <Products myItems = {products} reloadData = {Reload} />            
         </div>
     );
 };
