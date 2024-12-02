@@ -9,7 +9,7 @@ import Products from './components/Products';
 import Add from './components/Add';
 import Wishlist from './components/Wishlist';
 import ViewProducts from './components/ViewProducts';
-
+import Update from './components/Update';
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
         <Route path="/Products" element={<ViewProducts />}/>
         <Route path="/Wishlist" element={<h1>test </h1>} />
         <Route path="/Add" element={<Add />} />
+        <Route path="/Update/:id" element={<Update />} />
         </Routes>
       <Footer />
     </Router>

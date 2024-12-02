@@ -13,6 +13,7 @@ const NavigationBar = () => {
               <Nav.Link href="/Products">Products</Nav.Link>
               <Nav.Link href="/Wishlist">Wishlist</Nav.Link>
               <Nav.Link href="/Add">Add</Nav.Link>
+              <Nav.Link href="/Update">Update</Nav.Link>
               </Nav>
           </Container>
       </Navbar>

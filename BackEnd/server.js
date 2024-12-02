@@ -54,6 +54,18 @@ app.post('/api/products', async (req, res) => {
     res.status(201).json({"message": "product added", Product:newProduct});
 });
 
+//edit - retrieve current info
+app.get('/api/products/:id', async (req, res) => {
+    let product = await productModel.findById(req.params.id);
+    res.send(product);
+});
+
+//update info
+app.put('/api/products/:id', async (req, res) => {
+    let product = await productModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.send(product);
+});
+
 //delete product
 app.delete('/api/products/:id', async (req, res) => {
     console.log('Deleting products - ID: ', req.params.id);

@@ -30,12 +30,14 @@ const ProductItem = (props) => {
                 style = {{height: "200px", objectFit: "cover"}}/>
                 <footer>{props.myitem.price}</footer>
                 <footer>{props.myitem.type}</footer>
-              </blockquote>
+              </blockquote>{/*Added button*/}
+          <Button variant="danger" onClick={handleDelete}>Delete</Button> 
+          <Button>Wishlist</Button>
+          <Link to={"/update/" + props.myitem._id} className="btn btn-primary">Edit</Link>
+    
             </Card.Body>
              </Card>
-          {/*Added button*/}
-          <Button variant="danger" onClick={handleDelete}>Delete</Button> 
-          <Button>Add to Wishlist</Button>
+          
         </div>
       );
 }
