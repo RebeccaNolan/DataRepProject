@@ -30,7 +30,7 @@ const Home = () => {
     };
 
   return (
-    <div style={{textAlign: "center"}}>
+    <div style={{textAlign: "center", padding: "20px"}}>
       <h1>Welcome to Music World!</h1>
 
       <div>
@@ -43,9 +43,6 @@ const Home = () => {
                         alt = {product.name}
                         style = {{height: "300px", objectFit: "contain"}}
                     />
-                    {/* <Carousel.Caption>
-                        <h3 style={{color: "#ffffff", backgroundColor: "#000000"}}>{product.name}</h3>
-                    </Carousel.Caption> */}
                 </Carousel.Item>
             ))}
         </Carousel>

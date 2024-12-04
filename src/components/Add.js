@@ -24,9 +24,9 @@ const Add = () => {
   }
 
   return (
-    <div>
+    <div style={{textAlign: "center", padding: "20px"}}>
       <h2>Add a product</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{maxWidth: "400px", margin: "0 auto"}}>
         <div className="form-group">
           <label>Name: </label>
           <input type="text"
@@ -61,7 +61,7 @@ const Add = () => {
             onChange={(e) => { setImage(e.target.value) }}
           />
         </div>
-        <input type="submit" value="Add product" />
+        <input type="submit" value="Add product" style={{margin:"20px", color: "#fcfcfc", backgroundColor: "#830fdb"}}/>
       </form>
     </div>
     

@@ -40,8 +40,8 @@ export default function Update(props) {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div style={{textAlign: "center", padding: "20px"}}>
+            <form onSubmit={handleSubmit} style={{maxWidth: "400px", margin: "0 auto"}}>
                 <div className="form-group">
                     <label>Product Name: </label>
                     <input type="text" 
@@ -71,7 +71,7 @@ export default function Update(props) {
                     onChange={(e) => setImage(e.target.value)} />
                 </div>
                 <div className="form-group">
-                    <input type="submit" value="Edit Product" className="btn btn-primary" />
+                    <input type="submit" value="Edit Product" className="btn btn-primary" style={{margin:"20px", color: "#fcfcfc", backgroundColor: "#830fdb"}}/>
                 </div>
             </form>
         </div>
