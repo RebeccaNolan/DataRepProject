@@ -55,11 +55,11 @@ const ViewProducts = () => {
                 value={selectedCategory}
                 onChange={(e) => filterProducts(e.target.value)}
             >
-                {categories.map((category, index) => {
+                {categories.map((category, index) => (
                     <option key={index} value={category}>
                         {category}
                     </option>
-                })}
+                ))}
             </select>
 
 <br></br>
