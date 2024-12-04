@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Add = () => {
   const [name, setName] = useState('');
   const [type, setType] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,8 +15,12 @@ const Add = () => {
     console.log(product);
 
     axios.post('http://localhost:4000/api/products', product)
-      .then((res) => { console.log(res.data) })
-      .catch();
+      .then((res) => { console.log(res.data);
+        navigate('/products');
+       })
+      .catch((error) => {
+        console.error("Can't add product: ", error);
+      });
   }
 
   return (

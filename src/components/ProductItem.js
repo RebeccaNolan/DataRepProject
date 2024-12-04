@@ -22,15 +22,16 @@ const ProductItem = (props) => {
 
   return (
     <div>
-      <Card style={{width: "18rem", height: "25rem"}}>
+      <Card style={{ width: "18rem", height: "25rem" }}>
         <Card.Header>{props.myitem.name}</Card.Header>
         <Card.Body>
           <blockquote className="blockquote mb-0">
             <img src={props.myitem.image} alt={props.myitem.name}
-              style={{ height: "200px", objectFit: "contain", width:"100%"}} />
+              style={{ height: "200px", objectFit: "contain", width: "100%" }} />
             <footer>{props.myitem.price}</footer>
             <footer>{props.myitem.type}</footer>
           </blockquote>
+          <br></br>
           <Button variant="danger" onClick={handleDelete}>Delete</Button>
           <Link to={"/Update/" + props.myitem._id} className="btn btn-primary">Edit</Link>
 
