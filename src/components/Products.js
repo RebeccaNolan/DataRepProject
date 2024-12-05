@@ -4,7 +4,7 @@ import ProductItem from "./ProductItem";
 function Products(props) {
     return (
 
-        <Container>
+        <Container style={{ textAlign: "center", marginTop: "20px" }}>
             <CardGroup>
                 {props.myItems.map((item) => (
                     <ProductItem

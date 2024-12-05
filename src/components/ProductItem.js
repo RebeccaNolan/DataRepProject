@@ -22,7 +22,7 @@ const ProductItem = (props) => {
 
   return (
     <div>
-      <Card style={{ width: "18rem", height: "25rem" }}>
+      <Card style={{ width: "18rem", height: "25rem", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"}}>
         <Card.Header>{props.myitem.name}</Card.Header>
         <Card.Body>
           <blockquote className="blockquote mb-0">
@@ -31,10 +31,10 @@ const ProductItem = (props) => {
             <footer>{props.myitem.price}</footer>
             <footer>{props.myitem.type}</footer>
           </blockquote>
-          <br></br>
-          <Button variant="danger" onClick={handleDelete}>Delete</Button>
-          <Link to={"/Update/" + props.myitem._id} className="btn btn-primary">Edit</Link>
-
+          <div style={{textAlign: "center", marginTop:"10px"}}>
+            <Button onClick={handleDelete} style={{ margin: "5px", backgroundColor: "#0954ab" }}>Delete</Button>
+            <Link to={"/Update/" + props.myitem._id} className="btn btn-primary" style={{ margin: "5px", backgroundColor: "#0bb8d6" }}>Edit</Link>
+          </div>
         </Card.Body>
       </Card>
 

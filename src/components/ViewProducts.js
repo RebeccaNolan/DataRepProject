@@ -6,21 +6,20 @@ const ViewProducts = () => {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState("All");
 
     const Reload = () => {
         console.log("Reloading data");
         axios.get('http://localhost:4000/api/products')
             .then((response) => {
-                //setProducts(response.data.items);
                 const items = response.data.items;
 
                 setProducts(items);
                 setFilteredProducts(items);
 
                 const uniqueCategory = ["All"];
-                items.forEach((item) => {
-                    if (!uniqueCategory.includes(item.type)) {
+                items.forEach((item) => { const normalizedType = item.type.toLowerCase(); // Convert to lowercase
+                    if (!uniqueCategory.some((cat) => cat.toLowerCase() === normalizedType))  {
                         uniqueCategory.push(item.type);
                     }
                 });
@@ -42,7 +41,7 @@ const ViewProducts = () => {
             setFilteredProducts(products);
         }
         else {
-            setFilteredProducts(products.filter((product) => product.type === category));
+            setFilteredProducts(products.filter((product) => product.type.toLowerCase() === category.toLowerCase()));
         }
     };
 
@@ -62,9 +61,6 @@ const ViewProducts = () => {
                 ))}
             </select>
 
-<br></br>
-<br></br>
-<br></br>
             <Products myItems={filteredProducts} reloadData={Reload} />
         </div>
     );

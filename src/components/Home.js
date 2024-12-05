@@ -8,14 +8,14 @@ const Home = () => {
     const [products, setProducts] = useState([]);
     const navigate = useNavigate();
 
-    useEffect(()=> {
+    useEffect(() => {
         axios.get('http://localhost:4000/api/products')
-        .then((response) => {
-            setProducts(response.data.items);
-        })
-        .catch((error) => {
-            console.error("Error finding products: ", error);
-        });
+            .then((response) => {
+                setProducts(response.data.items);
+            })
+            .catch((error) => {
+                console.error("Error finding products: ", error);
+            });
     }, []);
 
 
@@ -29,34 +29,34 @@ const Home = () => {
         navigate('/Add');
     };
 
-  return (
-    <div style={{textAlign: "center", padding: "20px"}}>
-      <h1>Welcome to Music World!</h1>
+    return (
+        <div style={{ textAlign: "center", padding: "20px" }}>
+            <h1>Welcome to Music World!</h1>
 
-      <div>
-        <Carousel>
-            {products.map((product) => (
-                <Carousel.Item key={product._id}>
-                    <img
-                        className='d-block w-100'
-                        src = {product.image}
-                        alt = {product.name}
-                        style = {{height: "300px", objectFit: "contain"}}
-                    />
-                </Carousel.Item>
-            ))}
-        </Carousel>
-
-        <h3>View our products or add your own!</h3>
-      </div>
-
-      <div style={{marginTop: "20px"}}>
-        <Button variant="primary" onClick={handleViewProducts}>View Products</Button>
-        <Button variant="success" onClick={handleAddProducts}>Add a Product</Button>
-     
-      </div>
-      </div>
-  );
+            <div style={{ padding: "20px" }}>
+                <Carousel
+                 nextIcon={<span aria-hidden="true" className="carousel-control-next-icon" style={{ filter: 'invert(1)' }} />}
+                 prevIcon={<span aria-hidden="true" className="carousel-control-prev-icon" style={{ filter: 'invert(1)' }} />}
+            >
+                    {products.map((product) => (
+                        <Carousel.Item key={product._id}>
+                            <img
+                                className='d-block w-100'
+                                src={product.image}
+                                alt={product.name}
+                                style={{ height: "300px", objectFit: "contain" }}
+                            />
+                        </Carousel.Item>
+                    ))}
+                </Carousel>
+            </div>
+            <h3>View our products or add your own!</h3>
+            <div style={{ marginTop: "20px" }}>
+                <Button variant="primary" onClick={handleViewProducts}>View Products</Button>
+                <Button variant="success" onClick={handleAddProducts}>Add a Product</Button>
+            </div>
+        </div>
+    );
 }
 
 export default Home;
