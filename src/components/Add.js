@@ -40,14 +40,12 @@ const Add = () => {
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "20px" ,minHeight: "70vh"}}>
+    <div style={{ textAlign: "center", padding: "20px", minHeight: "70vh" }}>
       <h2>Add a product</h2>
-       {/* Validation error message */}
-       {error && (
-            <p style={{ color: "red", fontWeight: "bold", marginBottom: "10px" }}>
-                {error}
-            </p>
-        )}
+      {/* Validation error message */}
+      {error && (
+        <p style={{ color: "red", fontWeight: "bold", marginBottom: "10px" }}>{error}</p>
+      )}
       <form onSubmit={handleSubmit} style={{ maxWidth: "400px", margin: "0 auto" }}>
         <div className="form-group">
           <label>Name: </label>
@@ -83,8 +81,8 @@ const Add = () => {
             onChange={(e) => { setImage(e.target.value) }}
           />
         </div>
-        <input type="submit" value="Add" style={{ margin: "20px", color: "#fcfcfc", backgroundColor: "#0bb8d6", border: "none", borderRadius:"5px",padding:"10px 10px" }} />
-        <button onClick={handleCancel} style={{ margin: "20px", color: "#fcfcfc", backgroundColor: "#0bb8d6", border: "none", borderRadius:"5px",padding:"10px 10px" }}>Cancel</button>
+        <input type="submit" value="Add" style={{ margin: "20px", color: "#fcfcfc", backgroundColor: "#0bb8d6", border: "none", borderRadius: "5px", padding: "10px 10px" }} />
+        <button onClick={handleCancel} style={{ margin: "20px", color: "#fcfcfc", backgroundColor: "#0bb8d6", border: "none", borderRadius: "5px", padding: "10px 10px" }}>Cancel</button>
       </form>
     </div>
 

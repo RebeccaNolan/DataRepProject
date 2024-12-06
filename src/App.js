@@ -8,6 +8,7 @@ import Add from './components/Add';
 import ViewProducts from './components/ViewProducts';
 import Update from './components/Update';
 import Home from './components/Home';
+import Wishlist from './components/Wishlist';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/Products" element={<ViewProducts />}/>
         <Route path="/Add" element={<Add />} />
         <Route path="/Update/:id" element={<Update />} />
+        <Route path="/Wishlist" element={<Wishlist />} />
         </Routes>
       <Footer />
     </Router>
