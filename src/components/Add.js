@@ -12,7 +12,7 @@ const Add = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //validation
+    //validation -- all fields must have a value
     if (!name || !type || !price || !image) {
       setError("Please fill out all fields");
       return;

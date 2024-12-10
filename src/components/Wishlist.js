@@ -32,10 +32,7 @@ const Wishlist = () => {
                             </Card.Body>
                         </Card>
                     ))}
-                </div>
-            ) : (
-                <p>Wishlist is empty... </p>
-            )}
+                </div>) : (<p>Wishlist is empty... </p>)}
         </div>
     );
 };

@@ -1,10 +1,10 @@
-import { CardGroup, Container } from "react-bootstrap";
+import { CardGroup } from "react-bootstrap";
 import ProductItem from "./ProductItem";
 
 function Products(props) {
     return (
 
-        <Container style={{ textAlign: "center", marginTop: "20px" }}>
+        <div style={{ display:"flex", flexWrap:"wrap", justifyContent:"center", gap: "20px", marginTop:"20px"}}>
             <CardGroup>
                 {props.myItems.map((item) => (
                     <ProductItem
@@ -14,7 +14,7 @@ function Products(props) {
                     />
                 ))}
             </CardGroup>
-        </Container>
+        </div>
     );
 }
 

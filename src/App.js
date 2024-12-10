@@ -12,8 +12,13 @@ import Wishlist from './components/Wishlist';
 
 function App() {
   return (
+    <div style={{display:"flex",flexDirection: "column",
+      minHeight: "100vh",}}>
+
+   
     <Router>
       <NavigationBar/>
+      <div style={{ flex: "1" }}> 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Products" element={<ViewProducts />}/>
@@ -21,8 +26,10 @@ function App() {
         <Route path="/Update/:id" element={<Update />} />
         <Route path="/Wishlist" element={<Wishlist />} />
         </Routes>
+        </div>
       <Footer />
-    </Router>
+    </Router> 
+    </div>
   );
 }
 
