@@ -11,6 +11,8 @@ export default function Update(props) {
     const [type, setType] = useState("");
     const [price, setPrice] = useState("");
     const [image, setImage] = useState("");
+
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -28,6 +30,16 @@ export default function Update(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        //validation -- all fields must have a value
+        if (!name || !type || !price || !image) {
+            setError("Please fill out all fields");
+            return;
+        }
+
+        //reset error
+        setError('');
+
         //create object with updated details
         const editProduct = { id, name, type, price, image };
 
@@ -46,6 +58,10 @@ export default function Update(props) {
     //form for editing the product
     return (
         <div style={{ textAlign: "center", padding: "20px", minHeight: "70vh" }}>
+            {/* Validation error message */}
+            {error && (
+                <p style={{ color: "red", fontWeight: "bold", marginBottom: "10px" }}>{error}</p>
+            )}
             <form onSubmit={handleSubmit} style={{ maxWidth: "400px", margin: "0 auto" }}>
                 <div className="form-group">
                     <label>Product Name: </label>
