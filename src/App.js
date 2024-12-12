@@ -21,10 +21,10 @@ function App() {
       <div style={{ flex: "1" }}> 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Products" element={<ViewProducts />}/>
-        <Route path="/Add" element={<Add />} />
-        <Route path="/Update/:id" element={<Update />} />
-        <Route path="/Wishlist" element={<Wishlist />} />
+        <Route path="/products" element={<ViewProducts />}/>
+        <Route path="/add" element={<Add />} />
+        <Route path="/update/:id" element={<Update />} />
+        <Route path="/wishlist" element={<Wishlist />} />
         </Routes>
         </div>
       <Footer />
