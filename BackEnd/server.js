@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
     res.send('This is running from the server');
 });
 
-//to fetch all products
+//fetch all products
 app.get('/api/products', async (req, res) => {
     const items = await productModel.find({});
     res.status(200).json({items})
