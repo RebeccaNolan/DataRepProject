@@ -5,19 +5,17 @@ import { useParams } from "react-router-dom";
 
 //export edit componenet
 export default function Update(props) {
-    let { id } = useParams();
+    let { id } = useParams(); //get ID from URL parameters
 
-    //variables to store movies
     const [name, setName] = useState("");
     const [type, setType] = useState("");
     const [price, setPrice] = useState("");
     const [image, setImage] = useState("");
-    const navigate = useNavigate(); //hook to navigate routes
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('http://localhost:4000/api/products/' + id)
             .then((response) => {
-                //populate state vars with response data
                 setName(response.data.name);
                 setType(response.data.type);
                 setPrice(response.data.price);
@@ -30,8 +28,9 @@ export default function Update(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        //create object with updated details
         const editProduct = { id, name, type, price, image };
-        //send PUT request
+
         axios.put('http://localhost:4000/api/products/' + id, editProduct)
             .then((res) => {
                 console.log(res.data);
@@ -41,9 +40,10 @@ export default function Update(props) {
 
     const handleCancel = (e) => {
         e.preventDefault();
-        navigate('/Products');
+        navigate('/products');
     };
 
+    //form for editing the product
     return (
         <div style={{ textAlign: "center", padding: "20px", minHeight: "70vh" }}>
             <form onSubmit={handleSubmit} style={{ maxWidth: "400px", margin: "0 auto" }}>
@@ -75,8 +75,8 @@ export default function Update(props) {
                         value={image}
                         onChange={(e) => setImage(e.target.value)} />
                 </div>
-                <input type="submit" value="Edit Product" style={{ margin: "20px", color: "#fcfcfc", backgroundColor: "#830fdb", border: "none", borderRadius:"5px",padding:"10px 10px" }} />
-                <button onClick={handleCancel} style={{ margin: "20px", color: "#fcfcfc", backgroundColor: "#830fdb", border: "none", borderRadius:"5px",padding:"10px 10px" }}>Cancel</button>
+                <input type="submit" value="Edit Product" style={{ margin: "20px", color: "#fcfcfc", backgroundColor: "#830fdb", border: "none", borderRadius: "5px", padding: "10px 10px" }} />
+                <button onClick={handleCancel} style={{ margin: "20px", color: "#fcfcfc", backgroundColor: "#830fdb", border: "none", borderRadius: "5px", padding: "10px 10px" }}>Cancel</button>
             </form>
         </div>
     );

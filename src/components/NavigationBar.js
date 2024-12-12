@@ -10,9 +10,9 @@ const NavigationBar = () => {
         <Navbar.Brand href="/">Music World</Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/Products">Products</Nav.Link>
-          <Nav.Link href="/Add">Add</Nav.Link>
-          <Nav.Link href="/Wishlist">Wishlist</Nav.Link>
+          <Nav.Link href="/products">Products</Nav.Link>
+          <Nav.Link href="/add">Add</Nav.Link>
+          <Nav.Link href="/wishlist">Wishlist</Nav.Link>
         </Nav>
       </Container>
     </Navbar>

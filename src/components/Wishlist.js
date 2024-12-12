@@ -6,11 +6,13 @@ const Wishlist = () => {
     const [wishlist, setWishlist] = useState([]);
 
     useEffect(() => {
+        //retrieve wishlist from localStorage
         const savedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
         setWishlist(savedWishlist);
     }, []);
 
     const handleRemove = (id) => {
+        //filter out item with matching ID
         const updatedWishlist = wishlist.filter((item) => item._id !== id);
         setWishlist(updatedWishlist);
         localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
@@ -19,6 +21,7 @@ const Wishlist = () => {
     return (
         <div style={{ textAlign: "center", marginTop: "20px" }}>
             <h2>My Wishlist</h2>
+            {/* Checks if wishlist is empty, displays products if not empty */}
             {wishlist.length > 0 ? (
                 <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
                     {wishlist.map((item) => (
@@ -32,7 +35,8 @@ const Wishlist = () => {
                             </Card.Body>
                         </Card>
                     ))}
-                </div>) : (<p>Wishlist is empty... </p>)}
+                </div>
+            ) : (<p>Wishlist is empty... </p>)}
         </div>
     );
 };

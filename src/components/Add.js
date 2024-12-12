@@ -36,9 +36,10 @@ const Add = () => {
 
   const handleCancel = (e) => {
     e.preventDefault();
-    navigate('/Products');
+    navigate('/products');
   };
 
+  //add form
   return (
     <div style={{ textAlign: "center", padding: "20px", minHeight: "70vh" }}>
       <h2>Add a product</h2>

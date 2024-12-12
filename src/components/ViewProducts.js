@@ -9,7 +9,6 @@ const ViewProducts = () => {
     const [selectedCategory, setSelectedCategory] = useState("All");
 
     const Reload = () => {
-        console.log("Reloading data");
         axios.get('http://localhost:4000/api/products')
             .then((response) => {
                 const items = response.data.items;
@@ -17,13 +16,16 @@ const ViewProducts = () => {
                 setProducts(items);
                 setFilteredProducts(items);
 
+                //add category to list if it doesn't already exist (case-insensitive)
                 const uniqueCategory = ["All"];
-                items.forEach((item) => { const normalizedType = item.type.toLowerCase(); // Convert to lowercase
-                    if (!uniqueCategory.some((cat) => cat.toLowerCase() === normalizedType))  {
+                items.forEach((item) => {
+                    const normalizedType = item.type.toLowerCase();
+                    if (!uniqueCategory.some((category) => category.toLowerCase() === normalizedType)) {
                         uniqueCategory.push(item.type);
                     }
                 });
 
+                //update state
                 setCategories(uniqueCategory);
             })
             .catch((error) => {
@@ -35,6 +37,7 @@ const ViewProducts = () => {
         Reload();
     }, []);
 
+    //display all products or the filtered products
     const filterProducts = (category) => {
         setSelectedCategory(category);
         if (category === "All") {
@@ -45,6 +48,7 @@ const ViewProducts = () => {
         }
     };
 
+    //filter drop down
     return (
         <div className="mb-3" style={{ maxWidth: "600px", margin: "20px auto" }}>
             <label htmlFor="categoryFilter" className="form-label">Filter by Category</label>
@@ -55,9 +59,7 @@ const ViewProducts = () => {
                 onChange={(e) => filterProducts(e.target.value)}
             >
                 {categories.map((category, index) => (
-                    <option key={index} value={category}>
-                        {category}
-                    </option>
+                    <option key={index} value={category}>{category}</option>
                 ))}
             </select>
 

@@ -6,6 +6,7 @@ function Products(props) {
 
         <div style={{ display:"flex", flexWrap:"wrap", justifyContent:"center", gap: "20px", marginTop:"20px"}}>
             <CardGroup>
+                {/* pass as a prop to ProductItem */}
                 {props.myItems.map((item) => (
                     <ProductItem
                         myitem={item}

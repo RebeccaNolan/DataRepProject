@@ -8,12 +8,13 @@ const ProductItem = (props) => {
   const [inWishlist, setInWishlist] = useState(false);
 
   useEffect(() => {
-    console.log("Product item: ", props.myitem); //log for debug
-
-    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    console.log("Product item: ", props.myitem);
+    //retrieve wishlist from localStorage and check if current item is in wishlist
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || []; 
     setInWishlist(wishlist.some((item) => item._id === props.myitem._id));
   }, [props.myitem]); //only run when prop changes
 
+  //delete a product
   const handleDelete = (e) => {
     e.preventDefault();
     axios.delete('http://localhost:4000/api/products/' + props.myitem._id)
@@ -25,13 +26,15 @@ const ProductItem = (props) => {
       });
   };
 
+  //saves wishlist to localStorage
   const handleWishlist = () => {
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     if (inWishlist) {
-      //remove from wishlist
+      //if item already in list - remove 
       wishlist = wishlist.filter((item) => item._id !== props.myitem._id);
     }
     else {
+      //else add item to wishlist
       wishlist.push(props.myitem);
     }
 
@@ -43,8 +46,10 @@ const ProductItem = (props) => {
   return (
     <div>
       <Card
-        style={{ width: "18rem", height: "100%", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", display: "flex", 
-        flexDirection: "column", justifyContent: "space-between" }}>
+        style={{
+          width: "18rem", height: "100%", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", display: "flex",
+          flexDirection: "column", justifyContent: "space-between"
+        }}>
         <Card.Header style={{ textAlign: "center", fontWeight: "bold" }}> {props.myitem.name} </Card.Header>
         <Card.Body style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between", paddingBottom: "20px" }}>
 
@@ -63,8 +68,10 @@ const ProductItem = (props) => {
             </div>
 
             {/* Wishlist Button */}
-            <Button onClick={handleWishlist} style={{ backgroundColor: inWishlist ? "red" : "green", 
-              color: "#fff", border: "none" }}> {inWishlist ? "Remove from Wishlist" : "Add to Wishlist"} </Button>
+            <Button onClick={handleWishlist} style={{
+              backgroundColor: inWishlist ? "red" : "green",
+              color: "#fff", border: "none"
+            }}> {inWishlist ? "Remove from Wishlist" : "Add to Wishlist"} </Button>
           </div>
         </Card.Body>
       </Card>
